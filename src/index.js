@@ -1,55 +1,55 @@
-import React from "react"
-import ReactDOM from "react-dom/client"
-import "./index.css"
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import './index.css'
 
 const pizzaData = [
   {
-    name: "Focaccia",
-    ingredients: "Bread with italian olive oil and rosemary",
+    name: 'Focaccia',
+    ingredients: 'Bread with italian olive oil and rosemary',
     price: 6,
-    photoName: "pizzas/focaccia.jpg",
+    photoName: 'pizzas/focaccia.jpg',
     soldOut: false
   },
   {
-    name: "Pizza Margherita",
-    ingredients: "Tomato and mozarella",
+    name: 'Pizza Margherita',
+    ingredients: 'Tomato and mozarella',
     price: 10,
-    photoName: "pizzas/margherita.jpg",
+    photoName: 'pizzas/margherita.jpg',
     soldOut: false
   },
   {
-    name: "Pizza Spinaci",
-    ingredients: "Tomato, mozarella, spinach, and ricotta cheese",
+    name: 'Pizza Spinaci',
+    ingredients: 'Tomato, mozarella, spinach, and ricotta cheese',
     price: 12,
-    photoName: "pizzas/spinaci.jpg",
+    photoName: 'pizzas/spinaci.jpg',
     soldOut: false
   },
   {
-    name: "Pizza Funghi",
-    ingredients: "Tomato, mozarella, mushrooms, and onion",
+    name: 'Pizza Funghi',
+    ingredients: 'Tomato, mozarella, mushrooms, and onion',
     price: 12,
-    photoName: "pizzas/funghi.jpg",
+    photoName: 'pizzas/funghi.jpg',
     soldOut: false
   },
   {
-    name: "Pizza Salamino",
-    ingredients: "Tomato, mozarella, and pepperoni",
+    name: 'Pizza Salamino',
+    ingredients: 'Tomato, mozarella, and pepperoni',
     price: 15,
-    photoName: "pizzas/salamino.jpg",
+    photoName: 'pizzas/salamino.jpg',
     soldOut: true
   },
   {
-    name: "Pizza Prosciutto",
-    ingredients: "Tomato, mozarella, ham, aragula, and burrata cheese",
+    name: 'Pizza Prosciutto',
+    ingredients: 'Tomato, mozarella, ham, aragula, and burrata cheese',
     price: 18,
-    photoName: "pizzas/prosciutto.jpg",
+    photoName: 'pizzas/prosciutto.jpg',
     soldOut: false
   }
 ]
 
 function App() {
   return (
-    <div className="container">
+    <div className='container'>
       <Header />
       <Menu />
       <Footer />
@@ -62,7 +62,7 @@ function Header() {
   const style = {}
 
   return (
-    <header className="header">
+    <header className='header'>
       <h1 style={style}>Fast React Pizza Co.</h1>
     </header>
   )
@@ -70,13 +70,37 @@ function Header() {
 
 function Menu() {
   return (
-    <main className="menu">
+    <main className='menu'>
       <h2>Our menu</h2>
-      <Pizza />
-      <Pizza />
-      <Pizza />
-      <Pizza />
+      <Pizza
+        name='Pizza Spinacci'
+        ingredients='Tomato, mozarella, spinach, and ricotta cheese'
+        photoName='pizzas/spinaci.jpg'
+        price={10}
+      />
+
+      <Pizza
+        name='Pizza Funghi'
+        ingredients='Tomato, mushrooms'
+        photoName='pizzas/funghi.jpg'
+        price='12'
+      />
     </main>
+  )
+}
+
+function Pizza(props) {
+  console.log(props)
+
+  return (
+    <div className='pizza'>
+      <img src={props.photoName} alt={props.name} />
+      <div>
+        <h3>{props.name}</h3>
+        <p>{props.ingredients}</p>
+        <span>{props.price + 3}</span>
+      </div>
+    </div>
   )
 }
 
@@ -88,27 +112,17 @@ function Footer() {
   console.log(isOpen)
 
   return (
-    <footer className="footer">
+    <footer className='footer'>
       {new Date().toLocaleTimeString()}. We're currently open!
     </footer>
   )
   // return React.createElement("footer", null, "We're currently open!")
 }
 
-function Pizza() {
-  return (
-    <div>
-      <img src="pizzas/spinaci.jpg" alt="Pizza Spinacci" />
-      <h3>Pizza Spinaci</h3>
-      <p>Tomato, mozarella, spinach, and ricotta cheese</p>
-    </div>
-  )
-}
-
 // React v18
-const root = ReactDOM.createRoot(document.getElementById("root"))
+const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+  // <React.StrictMode>
+  <App />
+  // </React.StrictMode>
 )
